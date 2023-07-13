@@ -8,6 +8,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Button title="Create Note" onPress={() => navigation.navigate('Create Note')} />
+      <Button title="teste" onPress={() => navigation.navigate('Public Notes')} />
+
       <FlatList
         data={notes}
         keyExtractor={note => note.id.toString()}

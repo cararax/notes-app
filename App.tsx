@@ -6,6 +6,7 @@ import CreateNoteScreen from './src/screens/CreateNoteScreen';
 import ViewNoteScreen from './src/screens/ViewNoteScreen';
 import EditNoteScreen from './src/screens/EditNoteScreen';
 import { NoteProvider } from './src/NoteContext';
+import PublicNotesScreen from './src/screens/PublicNotesScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
           <Stack.Screen name="Create Note" component={CreateNoteScreen} />
           <Stack.Screen name="View Note" component={ViewNoteScreen} />
           <Stack.Screen name="Edit Note" component={EditNoteScreen} />
+          <Stack.Screen name="Public Notes" component={PublicNotesScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </NoteProvider>
