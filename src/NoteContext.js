@@ -7,12 +7,10 @@ export const NoteProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
   const [nextId, setNextId] = useState(1);
 
-  // Load notes from local storage when starting up
   useEffect(() => {
     loadNotes();
   }, []);
 
-  // Save notes whenever they change
   useEffect(() => {
     saveNotes();
   }, [notes, nextId]);

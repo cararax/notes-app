@@ -10,9 +10,9 @@ const EditNoteScreen = ({ route, navigation }) => {
 
   React.useEffect(() => {
     register('title');
-    register('content');
+    register('text');
     setValue('title', note.title);
-    setValue('content', note.content);
+    setValue('text', note.text);
   }, [register]);
 
   const onSubmit = data => {
@@ -23,7 +23,7 @@ const EditNoteScreen = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <TextInput style={styles.input} defaultValue={note.title} onChangeText={text => setValue('title', text)} />
-      <TextInput style={styles.input} defaultValue={note.content} onChangeText={text => setValue('content', text)} multiline />
+      <TextInput style={styles.input} defaultValue={note.text} onChangeText={text => setValue('text', text)} multiline />
       <Button title="Save" onPress={handleSubmit(onSubmit)} />
     </View>
   );

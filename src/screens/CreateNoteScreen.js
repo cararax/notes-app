@@ -46,9 +46,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     borderRadius: 6,
     marginBottom: 10,
-    height: 180, // Ajuste o valor de acordo com a altura desejada
+    height: 180,
   },
-
   
 });
 
