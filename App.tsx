@@ -1,28 +1,25 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
-// Aqui vamos importar as telas que criaremos em seguida
-import HomeScreen from './screens/HomeScreen';
-import CreateNoteScreen from './screens/CreateNoteScreen';
-import ViewNoteScreen from './screens/ViewNoteScreen';
-import EditNoteScreen from './screens/EditNoteScreen';
-import PublicNotesScreen from './screens/PublicNotesScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import CreateNoteScreen from './src/screens/CreateNoteScreen';
+import ViewNoteScreen from './src/screens/ViewNoteScreen';
+import EditNoteScreen from './src/screens/EditNoteScreen';
+import { NoteProvider } from './src/NoteContext';
 
 const Stack = createStackNavigator();
 
-const App = () => {
+export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="CreateNote" component={CreateNoteScreen} />
-        <Stack.Screen name="ViewNote" component={ViewNoteScreen} />
-        <Stack.Screen name="EditNote" component={EditNoteScreen} />
-        <Stack.Screen name="PublicNotes" component={PublicNotesScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NoteProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Create Note" component={CreateNoteScreen} />
+          <Stack.Screen name="View Note" component={ViewNoteScreen} />
+          <Stack.Screen name="Edit Note" component={EditNoteScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NoteProvider>
   );
 }
-
-export default App;
