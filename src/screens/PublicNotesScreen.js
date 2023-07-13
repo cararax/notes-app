@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 import ApiService from '../services/ApiService';
 
-const PublicNotesScreen = () => {
+const PublicNotesScreen = ({ navigation }) => {
   const [publicNotes, setPublicNotes] = useState([]);
 
   useEffect(() => {
@@ -12,9 +12,7 @@ const PublicNotesScreen = () => {
   const fetchPublicNotes = async () => {
     try {
       const response = await ApiService.getPublicNotes();
-      console.error(response);
-
-      setPublicNotes(response.data);
+      setPublicNotes(response);
     } catch (error) {
       console.error(error);
     }
@@ -26,7 +24,14 @@ const PublicNotesScreen = () => {
         data={publicNotes}
         keyExtractor={note => note.id.toString()}
         renderItem={({ item }) => (
-          <Text style={styles.note}>{item.title}</Text>
+          <View style={styles.card}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.content}>{item.text}</Text>
+            <Button 
+              title="Visualizar" 
+              onPress={() => navigation.navigate('View Note', { note: item, isPublicNote: true })}
+            />
+          </View>
         )}
       />
     </View>
@@ -36,11 +41,23 @@ const PublicNotesScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
-  note: {
-    fontSize: 18,
+  card: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  content: {
+    fontSize: 16,
     marginBottom: 10,
   },
 });

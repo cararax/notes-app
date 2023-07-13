@@ -9,7 +9,7 @@ const CreateNoteScreen = ({ navigation }) => {
 
   React.useEffect(() => {
     register('title');
-    register('content');
+    register('text');
   }, [register]);
 
   const onSubmit = data => {
@@ -20,8 +20,8 @@ const CreateNoteScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <TextInput style={styles.input} placeholder="Title" onChangeText={text => setValue('title', text)} />
-      <TextInput style={styles.input} placeholder="Content" onChangeText={text => setValue('content', text)} multiline />
-      <Button title="Save" onPress={handleSubmit(onSubmit)} />
+      <TextInput style={styles.text} placeholder="Text" onChangeText={text => setValue('text', text)} multiline />
+      <Button style={styles.button} title="Save" onPress={handleSubmit(onSubmit)} />
     </View>
   );
 };
@@ -39,6 +39,17 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     marginBottom: 10,
   },
+  text: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6,
+    marginBottom: 10,
+    height: 180, // Ajuste o valor de acordo com a altura desejada
+  },
+
+  
 });
 
 export default CreateNoteScreen;
